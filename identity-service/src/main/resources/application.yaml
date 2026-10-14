@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: identity-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/identity_db
+    username: postgres
+    password: pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8090
+
+# ===== JWT CONFIG =====
+app:
+  jwt:
+    # Secret key: tối thiểu 32 bytes (256-bit) cho HS256
+    # Có thể sinh bằng: openssl rand -base64 32
+    secret: "pharmacy-super-secret-key-256bit-for-jwt-signing-2026"
+    # 1 giờ = 3600000 ms
+    expiration: 3600000
+
+logging:
+  level:
+    com.pharmacy.identityservice: DEBUG
